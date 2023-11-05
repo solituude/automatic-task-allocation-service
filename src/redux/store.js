@@ -5,9 +5,13 @@ import {
     compose,
     createStore } from "redux";
 import { appReducer } from "./reducer";
+import {managerReducer} from "./reducers/managerReducer/managerReducer";
+import {employeeReducer} from "./reducers/employeeReducer/employeeReducer";
 
 const reducers = combineReducers({
-    main: appReducer
+    main: appReducer,
+    manager: managerReducer,
+    employee: employeeReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
