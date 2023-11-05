@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+.container{
+  align-items: center;
+  width: 128px;
+  height: 48px;
+
+  border-radius: 15px;
+  background: #E4F2FF;
+
+  border: none;
+  cursor: pointer;
+}
+
+.label {
+  color: #001F5A;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

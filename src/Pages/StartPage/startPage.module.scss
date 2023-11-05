@@ -1,0 +1,41 @@
+.logo__container {
+  margin-top: 56px;
+  height: 64px;
+}
+
+.images__container{
+
+
+}
+
+.button__container{
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 24px 0;
+}
+
+.card {
+  position: absolute;
+  margin-top: -340px;
+  margin-left: -150px;
+}
+
+.card2 {
+  position: absolute;
+  margin-top: -250px;
+  margin-left: -100px;
+}
+
+
+.blur {
+  position: relative;
+  display: flex;
+  margin: 125px auto;
+  width: 191px;
+  height: 177px;
+
+  background: #FF4B5F;
+  filter: blur(75px);
+  z-index: 0;
+}

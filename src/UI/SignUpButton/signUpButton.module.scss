@@ -1,0 +1,18 @@
+.container {
+  width: 300px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 15px;
+  background: #118EFF;
+  border: none;
+  cursor: pointer;
+}
+
+.label {
+  color: #FFF;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
