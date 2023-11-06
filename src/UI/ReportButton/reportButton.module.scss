@@ -1,0 +1,23 @@
+.container {
+  display: inline-flex;
+  padding: 4px 8px;
+  justify-content: center;
+  width: 208px;
+  align-items: center;
+  gap: 8px;
+  margin: 0 32px;
+
+  border-radius: 15px;
+  border: none;
+  background: #118EFF;
+}
+
+.label {
+  color: #FFF;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.28px;
+}

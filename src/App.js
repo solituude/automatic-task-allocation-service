@@ -4,6 +4,7 @@ import StartPage from "./Pages/StartPage/StartPage";
 import SignUpPage from "./Pages/SignUpPage/SignUpPage";
 import LogInPage from "./Pages/LogInPage/LogInPage";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ManagerHomepage from "./Pages/ManagerHomepage/ManagerHomepage";
 function App() {
     return (
         <div className="App">
@@ -13,6 +14,7 @@ function App() {
                     <Route path='/start' element={<StartPage/>}/>
                     <Route path='/signup' element={<SignUpPage/>}/>
                     <Route path='/login' element={<LogInPage/>}/>
+                    <Route path='/managerHomepage' element={<ManagerHomepage/>}/>
                 </Routes>
             </BrowserRouter>
         </div>

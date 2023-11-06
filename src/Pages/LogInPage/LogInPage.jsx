@@ -5,6 +5,11 @@ import NameForm from "../../Components/NameForm/NameForm";
 import PasswordForm from "../../Components/PasswordForm/PasswordForm";
 
 const LogInPage = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        window.location.href = '/managerHomepage';
+    }
+
     return (
         <div className={s.content}>
             <BackButton/>
@@ -12,7 +17,8 @@ const LogInPage = () => {
             <form className={s.form__container}>
                 <NameForm/>
                 <PasswordForm/>
-                <button type={"submit"} className={s.submit__button}>
+
+                <button className={s.submit__button} type="submit" onClick={handleSubmit}>
                     <span className={s.submit__label}>
                         Войти
                     </span>
