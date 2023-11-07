@@ -15,7 +15,7 @@ const ManagerOptions = () => {
                 <img src={infoIcon} alt={"i"}/>
             </NavLink>
 
-            <NavLink to='/updateHandBook' className={s.option__container} style={{textDecoration: "none"}}>
+            <NavLink to='/handBook' className={s.option__container} style={{textDecoration: "none"}}>
                 <img src={rightIcon} alt={"<"}/>
                 <span className={s.option__label}>Редактировать справочники</span>
                 <img src={updateIcon} alt={"i"}/>
