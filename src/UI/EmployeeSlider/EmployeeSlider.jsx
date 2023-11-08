@@ -4,18 +4,22 @@ import employeeIcon from '../../assets/homepage/employeeIcon.svg';
 
 const users = [
     {
+        id: 0,
         name: "Дерягин Никита Владимирович",
         role: "Senior",
     },
     {
+        id: 1,
         name: "Петрошев Валерий Павлович",
         role: "Middle",
     },
     {
+        id: 2,
         name: "igor",
         role: "Middle",
     },
     {
+        id: 3,
         name: "igor",
         role: "Middle",
     },
@@ -41,7 +45,8 @@ const EmployeeSlider = () => {
             <span className={s.header}>Сотрудники</span>
             <div className={s.slider__container}>
                 {users.map((user) => (
-                    <EmployeeItem name={user.name} role={user.role}/>
+                    <div key={user.id}><EmployeeItem name={user.name} role={user.role}/>
+                    </div>
                 ))}
             </div>
         </div>

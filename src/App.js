@@ -6,7 +6,7 @@ import LogInPage from "./Pages/LogInPage/LogInPage";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ManagerHomepage from "./Pages/ManagerHomepage/ManagerHomepage";
 import PointsInfoPage from "./Pages/PointsInfoPage/PointsInfoPage";
-import HandBookPage from "./Pages/HandBookPage/HandBookPage";
+import ManualPage from "./Pages/ManualPage/ManualPage";
 import TaskDistribution from "./Pages/TaskDistributionPage/TaskDistribution";
 function App() {
     return (
@@ -19,7 +19,7 @@ function App() {
                     <Route path='/login' element={<LogInPage/>}/>
                     <Route path='/managerHomepage' element={<ManagerHomepage/>}/>
                     <Route path='/pointsInfo' element={<PointsInfoPage/>}/>
-                    <Route path='/handBook' element={<HandBookPage/>}/>
+                    <Route path='/handBook' element={<ManualPage/>}/>
                     <Route path='/taskDistribution' element={<TaskDistribution/>}/>
                 </Routes>
             </BrowserRouter>

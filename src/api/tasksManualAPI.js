@@ -19,16 +19,16 @@ export const tasksManualAPI = {
     },
 
     // получить справочник задачи обучения
-    getTutorialManual(header) {
-        return fetch('/tasks/tutorial/manual', {
+    getTuitionManual(header) {
+        return fetch('/tasks/tuition/manual', {
             method: 'GET',
             headers: header,
         });
     },
 
     // изменить справочник задачи обучения
-    changeTutorialManual(header, body) {
-        return fetch('/tasks/tutorial/manual', {
+    changeTuitionManual(header, body) {
+        return fetch('/tasks/tuition/manual', {
             method: 'PUT',
             headers: header,
             body: body

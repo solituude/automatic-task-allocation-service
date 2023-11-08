@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../../UI/Header/Header";
-import d from "../../Components/ManegerOptions/managerOptions.module.scss";
+import d from "../../Components/ManagerOptions/managerOptions.module.scss";
 import s from './pointsInfoPage.module.scss';
 import leftIcon from '../../assets/homepage/left.svg';
 import infoIcon from "../../assets/homepage/infoIcon.svg";
