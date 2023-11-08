@@ -9,6 +9,7 @@
 .option__container {
   display: flex;
   width: 100%;
+  height: fit-content;
   justify-content: flex-start;
   align-items: center;
   gap: 16px;
@@ -17,11 +18,12 @@
 }
 
 .option__label {
+  display: flex;
+  text-align: left;
   color: #001F5A;
   font-family: Montserrat, sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  letter-spacing: 0.32px;
 }

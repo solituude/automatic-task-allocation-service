@@ -3,7 +3,7 @@ import Header from "../../UI/Header/Header";
 import EmployeeSlider from "../../UI/EmployeeSlider/EmployeeSlider";
 import s from './managerHomepage.module.scss'
 import {ReportButton} from "../../UI/ReportButton/ReportButton";
-import ManagerOptions from "../../Components/ManegerOptions/ManagerOptions";
+import ManagerOptions from "../../Components/ManagerOptions/ManagerOptions";
 
 const ManagerHomepage = () => {
     return(
