@@ -1,5 +1,7 @@
-import React from "react";
+import React, {useState} from "react";
 import s from "../DepartureManual/departureManual.module.scss";
+import {Button, Modal} from "react-bootstrap";
+import Form from "react-bootstrap/Form";
 
 const info = {
     "priority": "LOW",
@@ -9,7 +11,68 @@ const info = {
     "issuedCardsCount": 0
 }
 
+
+const CustomModal = ({show, handleClose}) => {
+    return(
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+                <Modal.Title>Редактирование</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <div>
+                    Приоритет
+                    <Form.Select defaultValue={"LOW"}>
+                        <option value="LOW">Низкий</option>
+                        <option value="MIDDLE">Средний</option>
+                        <option value="HIGH">Высокий</option>
+                    </Form.Select>
+                </div>
+                <div>
+                    Требуемый уровень сотрудника
+                    <Form.Select defaultValue={"MIDDLE"}>
+                        <option value="JUNIOR">Джун</option>
+                        <option value="MIDDLE">Мидл</option>
+                        <option value="SENIOR">Сеньор</option>
+                    </Form.Select>
+                </div>
+
+                <div>
+                    Время выполнения (в часах)
+                    <Form.Select defaultValue={"MIDDLE"}>
+                        <option value="1">1</option>
+                        <option value="1.5">1.5</option>
+                        <option value="2">2</option>
+                        <option value="2.5">2.5</option>
+                        <option value="3">3</option>
+                        <option value="3.5">3.5</option>
+                        <option value="4">4</option>
+                    </Form.Select>
+                </div>
+
+                <div>
+                   Процент одобренных заявок
+                    <Form.Control type="number" />
+                </div>
+                <div>
+                    Минимальное количество выданных карт
+                    <Form.Control type="number" />
+                </div>
+
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                    Закрыть
+                </Button>
+                <Button variant="primary" onClick={handleClose}>
+                    Сохранить
+                </Button>
+            </Modal.Footer>
+        </Modal>
+    )
+}
+
 const TuitionManual = () => {
+    const [showModal, setShowModal] = useState(false);
     return(
         <div className={s.container}>
             <div className={s.info__tab}>
@@ -53,16 +116,10 @@ const TuitionManual = () => {
                         </span> карт
                 </span>
             </div>
-
+            <button onClick={() => setShowModal(true)}>Редактировать</button>
+            <CustomModal show={showModal} handleClose={() => setShowModal(false)}/>
 
         </div>
-        // <div>
-        //     {info.priority}
-        //     {info.performTime}
-        //     {info.requiredEmployeeGrade}
-        //     {info.approvedAppsPercentage}
-        //     {info.issuedCardsCount}
-        // </div>
     )
 }
 
