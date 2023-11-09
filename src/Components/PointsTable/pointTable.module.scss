@@ -13,12 +13,13 @@ th {
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0.28px;
-  border-bottom: 1px solid rgba(0, 55, 144, 0.50);
+  border: 1px solid rgba(0, 55, 144, 0.50);
   background: #E4F2FF;
 }
 
 tr {
-  border-bottom: 1px solid rgba(0, 55, 144, 0.50);
+  border: 1px solid rgba(0, 55, 144, 0.50);
+
   background: #FFF;
   color: #003790;
   font-family: Montserrat, sans-serif;
@@ -29,10 +30,17 @@ tr {
   letter-spacing: 0.3px;
 }
 
+td {
+  text-align: center;
+  border-left: 1px solid rgba(0, 55, 144, 0.50);
+  border-right: 1px solid rgba(0, 55, 144, 0.50);
+}
+
 .tab__ok{
   display: flex;
   width: fit-content;
   padding: 6px 16px;
+  margin: 0 auto;
   align-items: center;
   justify-content: center;
   border-radius: 15px;
@@ -51,4 +59,10 @@ tr {
   @extend .tab__ok;
   background: #FFB7BF;
   color: #C73E4D;
+}
+
+.custom__button {
+  border: none;
+  background: none;
+  color: #003790;
 }

@@ -11,7 +11,7 @@ const ManagerOptions = () => {
         <div className={s.content}>
             <NavLink to='/pointsInfo' className={s.option__container} style={{textDecoration: "none"}}>
                 <img src={rightIcon} alt={"<"}/>
-                <span className={s.option__label}>Информация по точкам</span>
+                <span className={s.option__label}>Информация по агентским точкам</span>
                 <img src={infoIcon} alt={"i"}/>
             </NavLink>
 

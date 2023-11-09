@@ -1,7 +1,24 @@
-import React from "react";
+import React, {useState} from "react";
 import s from './managerTaskTable.module.scss';
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import EditTaskModal from "../Modals/EditTaskModal/EditTaskModal";
+import DeletingTaskModal from "../Modals/DeletingTaskModal/DeletingTaskModal";
 
 const ManagerTaskTable = ({data}) => {
+    const [pointID, setPointID] = useState();
+    const [showEditModal, setShowEditModal] = useState(false);
+    const [showDeletingModal, setShowDeletingModal] = useState(false);
+
+    const handleClickEdit = (id) => {
+        setPointID(id);
+        setShowEditModal(true);
+    }
+
+    const handleClickDeleting = (id) => {
+        setPointID(id);
+        setShowDeletingModal(true);
+    }
     return(
         <div className={s.container}>
             <table>
@@ -17,6 +34,8 @@ const ManagerTaskTable = ({data}) => {
                     <th>Время передвижения до точки</th>
                     <th>Расстояние от предыдущего пункта</th>
                     <th>Время формирования задачи</th>
+                    <th>Редактировать</th>
+                    <th>Удалить</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -34,6 +53,18 @@ const ManagerTaskTable = ({data}) => {
                             <td>{task.gettingTime}</td>
                             <td>{task.distanceTo}</td>
                             <td>{task.creationTime}</td>
+                            <td>
+                                <button className={s.custom__button} onClick={() => handleClickEdit(task.id)}>
+                                    <EditIcon/>
+                                </button>
+                            </td>
+                            <td>
+                                <button className={s.custom__button} onClick={() => handleClickDeleting(task.id)}>
+                                    <DeleteForeverIcon/>
+                                </button>
+                            </td>
+                            <EditTaskModal id={task.id} show={showEditModal} handleClose={() => setShowEditModal(false)}/>
+                            <DeletingTaskModal id={task.id} show={showDeletingModal} handleClose={() => setShowDeletingModal(false)}/>
                         </tr>
                     ))
                 }

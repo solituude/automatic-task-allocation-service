@@ -21,6 +21,13 @@
   background: #118EFF;
 }
 
+.add__button {
+  @extend .distribution__button;
+  border: 1px solid #118EFF;
+  background: white;
+  color: #118EFF;
+}
+
 .back__button {
   display: flex;
   flex-direction: row;

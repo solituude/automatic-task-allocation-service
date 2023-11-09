@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Header from "../../UI/Header/Header";
 import s from "./taskDistribution.module.scss";
 import leftIcon from "../../assets/homepage/left.svg";
@@ -8,6 +8,7 @@ import d from "../../Components/ManagerOptions/managerOptions.module.scss";
 import {NavLink, useNavigate} from "react-router-dom";
 import distributeIcon from "../../assets/homepage/distributeIcon.svg";
 import ManagerTaskTable from "../../Components/ManagerTaskTable/ManagerTaskTable";
+import NewTaskModal from "../../Components/Modals/NewTaskModal/NewTaskModal";
 
 const data =  [
     {
@@ -31,11 +32,17 @@ const data =  [
 ]
 
 const TaskDistribution = () => {
+    const [showNewTaskModal, setShowNewTaskModal] = useState(false);
     const navigate = useNavigate();
+
+    const handleShowNewTaskModal = () => {
+        setShowNewTaskModal(true);
+    }
 
     const handleBack = () => {
         navigate(-1);
     }
+
 
     return(
         <div>
@@ -57,13 +64,13 @@ const TaskDistribution = () => {
                     </button>
                 </NavLink>
 
+                <button className={s.add__button} onClick={handleShowNewTaskModal}>
+                    Добавить задачу
+                </button>
             </div>
 
-
-
             <ManagerTaskTable data={data}/>
-
-
+            <NewTaskModal show={showNewTaskModal} handleClose={() => setShowNewTaskModal(false)}/>
         </div>
     )
 }

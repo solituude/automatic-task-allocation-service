@@ -130,7 +130,7 @@ const DepartureManual = () => {
                 </span>
             </div>
 
-            <button onClick={() => setShowModal(true)}>Редактировать</button>
+            <button className={s.edit__button} onClick={() => setShowModal(true)}>Редактировать</button>
             <CustomModal show={showModal} handleClose={() => setShowModal(false)}/>
         </div>
     )

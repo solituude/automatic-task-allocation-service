@@ -23,6 +23,8 @@ function App() {
                     <Route path='/handBook' element={<ManualPage/>}/>
                     <Route path='/taskDistribution' element={<TaskDistribution/>}/>
                     <Route path='/taskDistribution/archiveTasks' element={<ArchiveTasksPage/>}/>
+
+
                 </Routes>
             </BrowserRouter>
         </div>
