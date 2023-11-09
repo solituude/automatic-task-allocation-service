@@ -1,0 +1,39 @@
+.distribution__button {
+  display: inline-flex;
+  padding: 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 15px;
+  background: #FF4B5F;
+  color: #FFF;
+  border: none;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.28px;
+}
+
+.archive__button {
+  @extend .distribution__button;
+  background: #118EFF;
+}
+
+.back__button {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  border: none;
+  background: none;
+  padding: 28px 32px 24px 32px;
+  align-items: center;
+}
+
+.button__container {
+  padding: 0 26px 16px 26px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}

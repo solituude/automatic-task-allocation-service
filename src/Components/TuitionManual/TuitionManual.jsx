@@ -118,7 +118,6 @@ const TuitionManual = () => {
             </div>
             <button onClick={() => setShowModal(true)}>Редактировать</button>
             <CustomModal show={showModal} handleClose={() => setShowModal(false)}/>
-
         </div>
     )
 }

@@ -8,6 +8,7 @@ import ManagerHomepage from "./Pages/ManagerHomepage/ManagerHomepage";
 import PointsInfoPage from "./Pages/PointsInfoPage/PointsInfoPage";
 import ManualPage from "./Pages/ManualPage/ManualPage";
 import TaskDistribution from "./Pages/TaskDistributionPage/TaskDistribution";
+import ArchiveTasksPage from "./Pages/ArchiveTasksPage/ArchiveTasksPage";
 function App() {
     return (
         <div className="App">
@@ -21,6 +22,7 @@ function App() {
                     <Route path='/pointsInfo' element={<PointsInfoPage/>}/>
                     <Route path='/handBook' element={<ManualPage/>}/>
                     <Route path='/taskDistribution' element={<TaskDistribution/>}/>
+                    <Route path='/taskDistribution/archiveTasks' element={<ArchiveTasksPage/>}/>
                 </Routes>
             </BrowserRouter>
         </div>

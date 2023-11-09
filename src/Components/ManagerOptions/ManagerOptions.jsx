@@ -23,7 +23,7 @@ const ManagerOptions = () => {
 
             <NavLink to='/taskDistribution' className={s.option__container} style={{textDecoration: "none"}}>
                 <img src={rightIcon} alt={"<"}/>
-                <span className={s.option__label}>Распределить задачи</span>
+                <span className={s.option__label}>Список задач</span>
                 <img src={distributeIcon} alt={"i"}/>
             </NavLink>
         </div>
