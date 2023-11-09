@@ -7,7 +7,7 @@ import PasswordForm from "../../Components/PasswordForm/PasswordForm";
 const LogInPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
-        window.location.href = '/managerHomepage';
+        window.location.href = '/employeeHomepage';
     }
 
     return (

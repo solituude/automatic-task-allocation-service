@@ -6,7 +6,7 @@ const NameForm = () => {
         <div className={s.form__item}>
             <span className={s.input__label}>Ваше имя</span>
             <div className={s.input__container}>
-                <input type="text"/>
+                <input className={s.input__area} type="text"/>
             </div>
         </div>
     )

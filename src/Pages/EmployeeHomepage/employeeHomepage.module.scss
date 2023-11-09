@@ -1,0 +1,140 @@
+.container{
+  display: flex;
+  flex-direction: column;
+}
+
+.label__header {
+  color: #003790;
+  text-align: left;
+  font-family: Montserrat, sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.3px;
+}
+
+.label__date {
+  @extend .label__header;
+  border-bottom: 1px solid #003790;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 32px;
+  background: #E4F2FF;
+  gap: 16px;
+  min-height: calc(100vh - 125px);
+  max-height: 100%;
+}
+
+.task__container {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 16px;
+  align-items: flex-start;
+  gap: 16px;
+  border-radius: 15px;
+  background: #FFF;
+}
+
+.task__tab {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tab__info {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.task__fullInfo{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.task__label {
+  color: #003790;
+  text-align: center;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.28px;
+}
+
+.departure__task {
+
+}
+
+.more__button {
+  display: flex;
+  align-items: center;
+  border: none;
+  background: none;
+}
+
+.expand__container {
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+  gap: 12px;
+  padding: 8px;
+  margin: 4px;
+  background: rgba(228, 242, 255, 0.68);
+  border-radius: 15px;
+}
+
+.expand__item {
+  display: flex;
+  height: fit-content;
+  justify-content: left;
+  border-bottom: 1px solid rgba(0, 55, 144, 0.27);
+}
+
+.expand__regular {
+  color: #003790;
+  text-align: left;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.28px;
+}
+
+.expand__info {
+  @extend .expand__regular;
+  font-weight: 400;
+}
+
+.low__priority{
+  display: flex;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  background: rgba(180, 232, 186, 0.56);
+}
+
+.middle__priority {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  background: rgba(232, 229, 180, 0.56);
+}
+
+.high__priority {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  background: rgba(232, 180, 180, 0.56);
+}

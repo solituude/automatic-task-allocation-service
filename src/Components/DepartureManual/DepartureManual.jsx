@@ -3,8 +3,6 @@ import s from './departureManual.module.scss';
 import {Button, Modal} from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 
-
-
 const info = {
     "priority": "LOW",
     "performTime": 0,

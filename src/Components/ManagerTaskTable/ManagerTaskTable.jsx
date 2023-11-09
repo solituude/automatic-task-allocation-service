@@ -63,8 +63,8 @@ const ManagerTaskTable = ({data}) => {
                                     <DeleteForeverIcon/>
                                 </button>
                             </td>
-                            <EditTaskModal id={task.id} show={showEditModal} handleClose={() => setShowEditModal(false)}/>
-                            <DeletingTaskModal id={task.id} show={showDeletingModal} handleClose={() => setShowDeletingModal(false)}/>
+                            <EditTaskModal id={pointID} show={showEditModal} handleClose={() => setShowEditModal(false)}/>
+                            <DeletingTaskModal id={pointID} show={showDeletingModal} handleClose={() => setShowDeletingModal(false)}/>
                         </tr>
                     ))
                 }
