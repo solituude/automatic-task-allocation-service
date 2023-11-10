@@ -1,8 +1,10 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Header from "../../UI/Header/Header";
 import s from './employeeHomepage.module.scss';
 import downIcon from '../../assets/homepage/down.svg';
 import leftIcon from '../../assets/homepage/left.svg';
+import YandexMap from "../../Components/YandexMap/YandexMap";
+import {YMaps} from "@pbe/react-yandex-maps";
 
 const tasks = [
     {
@@ -95,9 +97,13 @@ const ExpandTaskInfo = ({id}) => {
     )
 }
 
-
+// https://codesandbox.io/s/react-yandex-maps-react-18-xrxt4b
 const EmployeeHomepage = () => {
     const [taskID, setTaskID] = useState(null);
+
+    useEffect(() => {
+
+    },[])
 
     const handleChangeStatus = (id) => {
 
@@ -138,6 +144,15 @@ const EmployeeHomepage = () => {
                         ))
                     }
                 </form>
+                <YMaps query={{
+                    load: "package.full",
+                    apikey: '3327d964-2e91-4e7e-837d-22de6e8c2379'
+                }}>
+
+                    <YandexMap/>
+                </YMaps>
+
+
             </div>
         </div>
     )

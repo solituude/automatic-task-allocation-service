@@ -1,4 +1,7 @@
 const initialState = {
+    login: '',
+    password: '',
+    role: '',
     isFetching: false,
 }
 
