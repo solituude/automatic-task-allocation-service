@@ -1,6 +1,5 @@
 import React, {useEffect, useRef} from "react";
-import {useYMaps, YMaps, Map} from "@pbe/react-yandex-maps";
-import s from './yandexMap.module.scss';
+import {useYMaps} from "@pbe/react-yandex-maps";
 
 const YandexMap = () => {
 

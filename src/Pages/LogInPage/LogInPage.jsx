@@ -1,18 +1,17 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {BackButton} from "../../UI/BackButton/BackButton";
 import s from '../SignUpPage/signUpPage.module.scss';
 import NameForm from "../../Components/NameForm/NameForm";
 import PasswordForm from "../../Components/PasswordForm/PasswordForm";
 import {connect} from "react-redux";
 import {requestAccountsInfo, setNewLogin, setNewPassword, setNewRole} from "../../redux/actions";
-import {NavLink} from "react-router-dom";
 
-const LogInPage = ({login, role, setNewLogin, setNewPassword, setNewRole, isFetching, requestAccountsInfo}) => {
+const LogInPage = ({role, setNewLogin, setNewPassword, requestAccountsInfo}) => {
 
     const [currentLogin, setCurrentLogin] = useState('');
     const [currentPassword, setCurrentPassword] = useState('');
     const header = new Headers();
-    header.append('Authorization', 'Basic ' + btoa('admin' + ':' + 'qwerty12'));
+    header.append('Authorization', 'Basic ' + btoa('admin:qwerty12'));
     header.append('Accept', 'application/json');
 
     // const header = new Headers();

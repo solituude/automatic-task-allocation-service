@@ -33,15 +33,15 @@ const test = [
 ];
 
 
+const loginLS = localStorage.getItem('login');
+const passwordLS = localStorage.getItem('password');
+const header = new Headers();
+header.append('Authorization', 'Basic ' + btoa(loginLS + ':' + passwordLS));
+header.append('Accept', 'application/json');
 
 const ManualPage = ({departureManual, tuitionManual, deliveryManual, requestDepartureManual, requestTuitionManual, requestDeliveryManual}) => {
     const navigate = useNavigate();
     const [manualID, setManualID] = useState(0);
-    const loginLS = localStorage.getItem('login');
-    const passwordLS = localStorage.getItem('password');
-    const header = new Headers();
-    header.append('Authorization', 'Basic ' + btoa(loginLS + ':' + passwordLS));
-    header.append('Accept', 'application/json');
 
     const handleBack = () => {
         navigate(-1);
@@ -56,7 +56,7 @@ const ManualPage = ({departureManual, tuitionManual, deliveryManual, requestDepa
         requestDepartureManual(header);
         requestTuitionManual(header);
         requestDeliveryManual(header);
-    },[])
+    },[requestDeliveryManual, requestDepartureManual, requestTuitionManual])
 
 
     return(

@@ -6,18 +6,6 @@ import EditPointModal from "../Modals/EditPointModal/EditPointModal";
 import DeletingPointModal from "../Modals/DeletingPointModal/DeletingPointModal";
 import {convertToSentence} from "../../helpers/helpers";
 
-const test = [
-    {
-        id: 0,
-        address: "ул. Ставропольская, д. 140",
-        connectionTime: "Вчера",
-        isDelieveried: "no",
-        daysAfterGiveLastCard: 0,
-        numberAcceptedRequests: 0,
-        numberGivedCards: 0,
-    }
-]
-
 const PointsTable = ({data}) => {
     const [pointID, setPointID] = useState();
     const [showEditModal, setShowEditModal] = useState(false);

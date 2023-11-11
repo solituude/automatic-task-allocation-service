@@ -1,6 +1,5 @@
 import React from "react";
 import {Button, Modal} from "react-bootstrap";
-import Form from "react-bootstrap/Form";
 
 const DeletingPointModal = ({id, show, handleClose}) => {
     return(

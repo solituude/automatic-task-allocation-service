@@ -10,14 +10,15 @@ import NewPointModal from "../../Components/Modals/NewPointModal/NewPointModal";
 import {connect} from "react-redux";
 import {requestAgentPoints} from "../../redux/reducers/managerReducer/managerAction";
 
+const header = new Headers();
+const login = localStorage.getItem('login');
+const password = localStorage.getItem('password');
+header.append('Authorization', 'Basic ' + btoa(login + ':' + password));
+header.append('Accept', 'application/json');
+
 const PointsInfoPage = ({agentPoints, requestAgentPoints}) => {
     const navigate = useNavigate();
     const [showNewPointModal, setShowNewPointModal] = useState(false);
-    const header = new Headers();
-    const login = localStorage.getItem('login');
-    const password = localStorage.getItem('password');
-    header.append('Authorization', 'Basic ' + btoa(login + ':' + password));
-    header.append('Accept', 'application/json');
 
     const handleBack = () => {
         navigate(-1);
@@ -27,7 +28,7 @@ const PointsInfoPage = ({agentPoints, requestAgentPoints}) => {
         requestAgentPoints(header);
         console.log(agentPoints);
         console.log(login, password)
-    },[])
+    },[agentPoints, requestAgentPoints])
 
     return(
         <div>

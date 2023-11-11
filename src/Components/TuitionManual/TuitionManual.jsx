@@ -4,14 +4,6 @@ import {Button, Modal} from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import {convertToSentence} from "../../helpers/helpers";
 
-const info = {
-    "priority": "LOW",
-    "performTime": 0,
-    "requiredEmployeeGrade": "JUNIOR",
-    "approvedAppsPercentage": 0,
-    "issuedCardsCount": 0
-}
-
 
 const CustomModal = ({show, handleClose}) => {
     return(

@@ -12,16 +12,17 @@ import NewTaskModal from "../../Components/Modals/NewTaskModal/NewTaskModal";
 import {connect} from "react-redux";
 import {requestAllTasks, setNewArchivedTasks, setNewTasks} from "../../redux/reducers/managerReducer/managerAction";
 
+const header = new Headers();
+const loginLS = localStorage.getItem('login');
+const passwordLS = localStorage.getItem('password');
+header.append('Authorization', 'Basic ' + btoa(loginLS + ':' + passwordLS));
+header.append('Accept', 'application/json');
+const archiveData = [];
 
 const TaskDistribution = ({tasks, employees, requestAllTasks, setNewArchivedTasks}) => {
     const [showNewTaskModal, setShowNewTaskModal] = useState(false);
     const navigate = useNavigate();
-    const header = new Headers();
-    const loginLS = localStorage.getItem('login');
-    const passwordLS = localStorage.getItem('password');
-    header.append('Authorization', 'Basic ' + btoa(loginLS + ':' + passwordLS));
-    header.append('Accept', 'application/json');
-    const archiveData = [];
+
 
 
     const handleBack = () => {
@@ -44,7 +45,7 @@ const TaskDistribution = ({tasks, employees, requestAllTasks, setNewArchivedTask
         requestAllTasks(header)
         setNewArchivedTasks(archiveData);
 
-    },[])
+    },[employees, requestAllTasks, setNewArchivedTasks])
 
     return(
         <div>
