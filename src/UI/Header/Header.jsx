@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useCallback, useEffect} from "react";
 import logo from '../../assets/startPage/scb_logo_RGB_NEW_main 1.svg';
 import s from './header.module.scss';
 import userIcon from '../../assets/homepage/userIcon.svg';
@@ -11,9 +11,18 @@ header.append('Authorization', 'Basic ' + btoa('admin:qwerty12'));
 header.append('Accept', 'application/json');
 const Header = ({fullName, role, requestAccountsInfo}) => {
 
+    const fetchDataCallback = useCallback(async (header, loginLS) => {
+        try {
+            await requestAccountsInfo(header, loginLS);
+            // Делайте что-то с результатом
+        } catch (error) {
+            console.error('Ошибка:', error.message);
+        }
+    }, [requestAccountsInfo]);
+
     useEffect(() => {
-        requestAccountsInfo(header, loginLS)
-    },[requestAccountsInfo])
+        fetchDataCallback(header, loginLS);
+    }, [fetchDataCallback]);
 
     return(
         <div className={s.container}>

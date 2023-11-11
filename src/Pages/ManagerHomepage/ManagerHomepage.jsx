@@ -13,12 +13,12 @@ const passwordLS = localStorage.getItem('password');
 header.append('Authorization', 'Basic ' + btoa(loginLS + ':' + passwordLS));
 header.append('Accept', 'application/json');
 
-const ManagerHomepage = ({ employees, requestEmployees}) => {
+const ManagerHomepage = ({ employees}) => {
 
     useEffect(() => {
         requestEmployees(header);
         console.log(employees)
-    },[employees, requestEmployees])
+    },[employees])
 
     return(
         <div className={s.container}>

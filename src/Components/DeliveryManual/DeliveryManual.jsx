@@ -4,13 +4,6 @@ import {Button, Modal} from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import {convertToSentence} from "../../helpers/helpers";
 
-const info = {
-    "priority": "LOW",
-    "performTime": 0,
-    "requiredEmployeeGrade": "JUNIOR",
-    "joinTime": "YESTERDAY"
-}
-
 
 const CustomModal = ({show, handleClose}) => {
     return(
@@ -72,7 +65,7 @@ const CustomModal = ({show, handleClose}) => {
     )
 }
 
-const DeliveryManual = () => {
+const DeliveryManual = ({data}) => {
     const [showModal, setShowModal] = useState(false);
     return(
         <div className={s.container}>
@@ -80,7 +73,7 @@ const DeliveryManual = () => {
                 <span className={s.regular__text}>
                     Приоритет:
                     <span className={s.value__text}>
-                        {convertToSentence(info.priority)}
+                        {convertToSentence(data.priority)}
                     </span>
                 </span>
             </div>
@@ -88,7 +81,7 @@ const DeliveryManual = () => {
                 <span className={s.regular__text}>
                     Время выполнения:
                     <span className={s.value__text}>
-                        {info.performTime}
+                        {data.performTime}
                     </span>
                 </span>
             </div>
@@ -97,7 +90,7 @@ const DeliveryManual = () => {
                 <span className={s.regular__text}>
                     Минимальный требуемый уровень сотрудника:
                     <span className={s.value__text}>
-                        {info.requiredEmployeeGrade}
+                        {data.requiredEmployeeGrade}
                     </span>
                 </span>
             </div>
@@ -110,7 +103,7 @@ const DeliveryManual = () => {
                     <br/> <br/>
                     Точка подключена
                         <span className={s.value__text}>
-                             {convertToSentence(info.joinTime)}
+                             {convertToSentence(data.joinTime)}
                         </span>
                 </span>
             </div>

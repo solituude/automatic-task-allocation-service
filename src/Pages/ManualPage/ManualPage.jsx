@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import Header from "../../UI/Header/Header";
 import s from "../PointsInfoPage/pointsInfoPage.module.scss";
 import leftIcon from "../../assets/homepage/left.svg";
@@ -52,12 +52,40 @@ const ManualPage = ({departureManual, tuitionManual, deliveryManual, requestDepa
         // console.log(manualID);
     }, [manualID])
 
-    useEffect(() => {
-        requestDepartureManual(header);
-        requestTuitionManual(header);
-        requestDeliveryManual(header);
-    },[requestDeliveryManual, requestDepartureManual, requestTuitionManual])
+    const fetchData1Callback = useCallback(async () => {
+        try {
+            await requestDepartureManual(header);
 
+        } catch (error) {
+            console.error('Ошибка:', error.message);
+        }
+    }, [requestDepartureManual]);
+
+    const fetchData2Callback = useCallback(async () => {
+        try {
+            await requestTuitionManual(header);
+
+        } catch (error) {
+            console.error('Ошибка:', error.message);
+        }
+    }, [requestTuitionManual]);
+
+
+
+    const fetchData3Callback = useCallback(async () => {
+        try {
+            await requestDeliveryManual(header);
+
+        } catch (error) {
+            console.error('Ошибка:', error.message);
+        }
+    }, [requestDeliveryManual]);
+
+    useEffect(() => {
+        fetchData1Callback();
+        fetchData2Callback();
+        fetchData3Callback();
+    }, [fetchData1Callback, fetchData2Callback, fetchData3Callback]);
 
     return(
         <div>
