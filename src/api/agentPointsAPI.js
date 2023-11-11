@@ -23,7 +23,7 @@ export const agentPointsAPI = {
      Требуемая роль: ADMIN или MANAGER
      * */
     getAllAgentPoints(header, page, size) {
-        return fetch(`/api/agent_points/all?page=${page}&size=${size}`, {
+        return fetch(`/agent_points/all?page=${page}&size=${size}`, {
             method: 'GET',
             headers: header
         })

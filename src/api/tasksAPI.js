@@ -36,7 +36,7 @@ export const tasksAPI = {
 
     //изменить задачу по айди (менеджер)
     changeTaskByID(header, body, id) {
-        return fetch(`/api/tasks/${id}`, {
+        return fetch(`/tasks/${id}`, {
             method: "PUT",
             headers: header,
             body: body

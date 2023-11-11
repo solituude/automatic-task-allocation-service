@@ -3,7 +3,7 @@ export const tasksManualAPI = {
 
     // получить справочник задачи выезда
     getDepartureManual(header) {
-        return fetch('/api/tasks/departure/manual', {
+        return fetch('/tasks/departure/manual', {
             method: 'GET',
             headers: header,
         });
@@ -11,7 +11,7 @@ export const tasksManualAPI = {
 
     //изменить справочник задачи выезда
     changeDepartureManual(header, body) {
-        return fetch('/api/tasks/departure/manual', {
+        return fetch('/tasks/departure/manual', {
             method: 'GET',
             headers: header,
             body: body
@@ -20,7 +20,7 @@ export const tasksManualAPI = {
 
     // получить справочник задачи обучения
     getTuitionManual(header) {
-        return fetch('/api/tasks/tuition/manual', {
+        return fetch('/tasks/tuition/manual', {
             method: 'GET',
             headers: header,
         });
@@ -36,7 +36,7 @@ export const tasksManualAPI = {
     },
     // получить справочник задачи доставки
     getDeliveryManual(header) {
-        return fetch('/api/tasks/delivery/manual', {
+        return fetch('/tasks/delivery/manual', {
             method: 'GET',
             headers: header,
         });
