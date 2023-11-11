@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import Header from "../../UI/Header/Header";
 import d from "../../Components/ManagerOptions/managerOptions.module.scss";
 import s from './pointsInfoPage.module.scss';
@@ -23,12 +23,18 @@ const PointsInfoPage = ({agentPoints, requestAgentPoints}) => {
     const handleBack = () => {
         navigate(-1);
     }
+    const fetchDataCallback = useCallback(async () => {
+        try {
+            await requestAgentPoints(header);
+            // Делайте что-то с результатом
+        } catch (error) {
+            console.error('Ошибка:', error.message);
+        }
+    }, [requestAgentPoints]);
 
     useEffect(() => {
-        requestAgentPoints(header);
-        console.log(agentPoints);
-        console.log(login, password)
-    },[agentPoints, requestAgentPoints])
+        fetchDataCallback();
+    }, [fetchDataCallback]);
 
     return(
         <div>

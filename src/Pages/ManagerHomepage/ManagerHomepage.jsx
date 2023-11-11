@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useCallback, useEffect} from "react";
 import Header from "../../UI/Header/Header";
 import EmployeeSlider from "../../UI/EmployeeSlider/EmployeeSlider";
 import s from './managerHomepage.module.scss'
@@ -13,12 +13,21 @@ const passwordLS = localStorage.getItem('password');
 header.append('Authorization', 'Basic ' + btoa(loginLS + ':' + passwordLS));
 header.append('Accept', 'application/json');
 
-const ManagerHomepage = ({ employees}) => {
+const ManagerHomepage = ({ employees, requestEmployees}) => {
+
+    const fetchDataCallback = useCallback(async () => {
+        try {
+            await requestEmployees(header);
+            // Делайте что-то с результатом
+        } catch (error) {
+            console.error('Ошибка:', error.message);
+        }
+    }, [requestEmployees]);
 
     useEffect(() => {
-        requestEmployees(header);
-        console.log(employees)
-    },[employees])
+        fetchDataCallback();
+    }, [fetchDataCallback]);
+
 
     return(
         <div className={s.container}>
