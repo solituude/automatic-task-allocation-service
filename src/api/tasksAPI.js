@@ -21,14 +21,14 @@ export const tasksAPI = {
     // Если роль пользователя EMPLOYEE, то возвращаются задачи только для данного сотрудника. При этом параметры employee_id, agent_point_id, archived не играют никакой роли.
     // Для сотрудника (в т.ч. если указан employee_id) всегда возращается отсортированными по полю order. Для остальных - по id.
     getAllTasks(header) {
-        return fetch(`/api/tasks/all`, {
+        return fetch(`/tasks/all`, {
             method: "GET",
             headers: header,
         })
     },
     //получить задачу по айди (менеджер, сотрудник к которому относится эта задача)
     getTaskByID(header, id) {
-        return fetch(`/api/tasks/${id}`, {
+        return fetch(`/tasks/${id}`, {
             method: "GET",
             headers: header
         })

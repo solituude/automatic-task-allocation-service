@@ -15,7 +15,7 @@ export const accountsAPI = {
      * Также метод доступен, если логин текущего пользователя равен запрашиваемому логину
      * */
     getAccountByLogin(header, login) {
-        return fetch(`/api/accounts/login/${login}`, {
+        return fetch(`/accounts/login/${login}`, {
             method: 'GET',
             headers: header
         })

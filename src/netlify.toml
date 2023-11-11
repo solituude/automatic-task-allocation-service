@@ -1,5 +1,5 @@
 [[redirects]]
-  from = "/api/*"
+  from = "https://main--frolicking-dodol-82d032.netlify.app/*"
   to = "http://178.170.196.88/:splat"
   status = 200
   force = true

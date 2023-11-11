@@ -36,8 +36,8 @@ export const setNewFullName = (newFullName) => async (dispatch) => {
 export const requestAccountsInfo = (header, login) => async (dispatch) => {
     dispatch(setIsFetching(true));
     const response = await accountsAPI.getAccountByLogin(header, login);
-    let data = response.json();
     console.log(response)
+    let data = response.json();
     if (response.status === 200) {
         data.then(res => {
             dispatch(setFullName(res.fullName));
