@@ -6,7 +6,7 @@ import {
     SET_TASKS, SET_TUITION_MANUAL
 } from "../../../constants/constants";
 import {tasksAPI} from "../../../api/tasksAPI";
-import {setCurrentTask, setIsFetching} from "../employeeReducer/employeeActions";
+import {setIsFetching} from "../employeeReducer/employeeActions";
 import {employeesAPI} from "../../../api/employeesAPI";
 import {agentPointsAPI} from "../../../api/agentPointsAPI";
 import {tasksManualAPI} from "../../../api/tasksManualAPI";
@@ -48,6 +48,12 @@ export const setNewTasks = (newPayload) => async (dispatch) => {
 }
 
 
+export const setArchivedTasks = (archivedTasks) => (
+    {type: 'SET_ARCHIVED_TASKS', archivedTasks}
+);
+export const setNewArchivedTasks = (newPayload) => async (dispatch) => {
+    dispatch(setArchivedTasks(newPayload));
+}
 
 
 
@@ -144,6 +150,21 @@ export const requestDeliveryManual = (header) => async (dispatch) => {
     console.log(data)
     if (response.status === 200) {
         data.then(res => dispatch(setDeliveryManual(res)))
+        // dispatch(setCurrentTask(response.json().items));
+        dispatch(setIsFetching(false));
+    } else {
+        console.log(response)
+        dispatch(setIsFetching(false));
+    }
+}
+
+export const requestAllTasks = (header) => async (dispatch) => {
+    dispatch(setIsFetching(true));
+    const response = await tasksAPI.getAllTasks(header);
+    let data = response.json();
+    console.log(data)
+    if (response.status === 200) {
+        data.then(res => dispatch(setTasks(res)))
         // dispatch(setCurrentTask(response.json().items));
         dispatch(setIsFetching(false));
     } else {

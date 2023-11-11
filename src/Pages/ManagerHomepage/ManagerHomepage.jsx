@@ -7,16 +7,18 @@ import ManagerOptions from "../../Components/ManagerOptions/ManagerOptions";
 import {connect} from "react-redux";
 import {requestEmployees} from "../../redux/reducers/managerReducer/managerAction";
 
-const ManagerHomepage = ({login, password, employees, requestEmployees}) => {
+const ManagerHomepage = ({ employees, requestEmployees}) => {
     const header = new Headers();
     const loginLS = localStorage.getItem('login');
     const passwordLS = localStorage.getItem('password');
     header.append('Authorization', 'Basic ' + btoa(loginLS + ':' + passwordLS));
     header.append('Accept', 'application/json');
+
     useEffect(() => {
         requestEmployees(header);
         console.log(employees)
     },[])
+
     return(
         <div className={s.container}>
             <Header/>
@@ -30,8 +32,6 @@ const ManagerHomepage = ({login, password, employees, requestEmployees}) => {
 }
 
 const mapStateToProps = (store) => ({
-    login: store.main.login,
-    password: store.main.password,
     employees: store.manager.employees,
 })
 

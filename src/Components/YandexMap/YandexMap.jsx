@@ -7,15 +7,15 @@ const YandexMap = () => {
     const mapRef = useRef(null);
     const ymaps = useYMaps(['Map']);
 
-    // useEffect(() => {
-    //     if (!ymaps || !mapRef.current) {
-    //         return;
-    //     }
-    //
-    //     var myMap = new ymaps.Map(mapRef.current, {
-    //         center: [55.76, 37.64],
-    //         zoom: 10,
-    //     });
+    useEffect(() => {
+        if (!ymaps || !mapRef.current) {
+            return;
+        }
+
+         new ymaps.Map(mapRef.current, {
+            center: [45.035470, 38.975313],
+            zoom: 10,
+        });
     //
     //     var multiRoute = new ymaps.multiRouter.MultiRoute({
     //         // Описание опорных точек мультимаршрута.
@@ -33,11 +33,11 @@ const YandexMap = () => {
     //         boundsAutoApply: true
     //     });
     //     myMap.geoObjects.add(multiRoute);
-    // }, [ymaps]);
+    }, [ymaps]);
 
 
     return (
-        <div ref={mapRef} style={{ width: '320px', height: '600px' }} />
+        <div ref={mapRef} style={{ width: '100%', height: '400px' }} />
     )
 }
 

@@ -5,7 +5,6 @@ import cardRight from '../../assets/startPage/image 26.svg';
 import {Container} from "react-bootstrap";
 import s from './startPage.module.scss';
 import {LogInButton} from "../../UI/LogInButton/LogInButton";
-import {SignUpButton} from "../../UI/SignUpButton/SignUpButton";
 
 const StartPage = () => {
     return(

@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import s from "../DepartureManual/departureManual.module.scss";
 import {Button, Modal} from "react-bootstrap";
 import Form from "react-bootstrap/Form";
+import {convertToSentence} from "../../helpers/helpers";
 
 const info = {
     "priority": "LOW",
@@ -79,7 +80,7 @@ const DeliveryManual = () => {
                 <span className={s.regular__text}>
                     Приоритет:
                     <span className={s.value__text}>
-                        {info.priority}
+                        {convertToSentence(info.priority)}
                     </span>
                 </span>
             </div>
@@ -109,7 +110,7 @@ const DeliveryManual = () => {
                     <br/> <br/>
                     Точка подключена
                         <span className={s.value__text}>
-                             {info.joinTime}
+                             {convertToSentence(info.joinTime)}
                         </span>
                 </span>
             </div>

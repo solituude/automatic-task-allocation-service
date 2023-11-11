@@ -1,11 +1,9 @@
 import {
     SET_CURRENT_TASK,
     SET_FULL_NAME, SET_IS_FETCHING,
-    SET_ROLE,
     SET_TASKS
 } from "../../../constants/constants";
 import {tasksAPI} from "../../../api/tasksAPI";
-import {setLogin} from "../../actions";
 
 export const setFullName = (fullName) => (
     {type: SET_FULL_NAME, fullName}

@@ -1,10 +1,20 @@
-import React from "react";
+import React, {useEffect} from "react";
 import logo from '../../assets/startPage/scb_logo_RGB_NEW_main 1.svg';
 import s from './header.module.scss';
 import userIcon from '../../assets/homepage/userIcon.svg';
 import {connect} from "react-redux";
+import {requestAccountsInfo} from "../../redux/actions";
 
-const Header = ({fullName, role}) => {
+const header = new Headers();
+const loginLS = localStorage.getItem('login');
+header.append('Authorization', 'Basic ' + btoa('admin:qwerty12'));
+header.append('Accept', 'application/json');
+const Header = ({fullName, role, requestAccountsInfo}) => {
+
+    useEffect(() => {
+        requestAccountsInfo(header, loginLS)
+    },[requestAccountsInfo])
+
     return(
         <div className={s.container}>
             <div className={s.logo__image}>
@@ -22,8 +32,8 @@ const Header = ({fullName, role}) => {
 }
 
 const mapStateToProps = (store) => ({
-    fullName: store.manager.fullName,
+    fullName: store.main.fullName,
     role: store.main.role,
 })
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, {requestAccountsInfo})(Header);

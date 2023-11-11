@@ -5,14 +5,20 @@ import {
     SET_EMPLOYEES,
     SET_TASKS, SET_TUITION_MANUAL
 } from "../../../constants/constants";
-import departureManual from "../../../Components/DepartureManual/DepartureManual";
 
 const initialState = {
     isFetching: false,
     agentPoints: [],
     currentAgentPoint: {},
     employees: [],
-    tasks: [],
+    tasks: {
+        totalItemCount: 0,
+        items: [],
+    },
+    archivedTasks: {
+        totalItemCount: 0,
+        items: [],
+    },
     departureManual: {},
     tuitionManual: {},
     deliveryManual: {}
@@ -34,6 +40,9 @@ export const managerReducer = (state = initialState, action) => {
             return {...state, tuitionManual: action.tuitionManual}
         case SET_DELIVERY_MANUAL:
             return {...state, deliveryManual: action.deliveryManual}
+        case 'SET_ARCHIVED_TASKS':
+            return {...state, archivedTasks: action.archivedTasks}
+
 
         default:
             return state;

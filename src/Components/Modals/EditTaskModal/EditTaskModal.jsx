@@ -2,7 +2,8 @@ import React from "react";
 import {Button, Modal} from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 
-const EditTaskModal = ({id, show, handleClose}) => {
+const EditTaskModal = ({data, id, show, handleClose}) => {
+    console.log(data)
     return(
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
@@ -11,7 +12,7 @@ const EditTaskModal = ({id, show, handleClose}) => {
             <Modal.Body>
                 <div>
                     Текст задачи
-                    <Form.Control type="text" />
+                    <Form.Control  type="text" />
                 </div>
                 <div>
                     Сотрудник

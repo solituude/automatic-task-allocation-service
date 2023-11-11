@@ -1,9 +1,6 @@
 import {
     SET_CURRENT_TASK,
     SET_FULL_NAME, SET_IS_FETCHING,
-    SET_LOGIN,
-    SET_PASSWORD,
-    SET_ROLE,
     SET_TASKS
 } from "../../../constants/constants";
 

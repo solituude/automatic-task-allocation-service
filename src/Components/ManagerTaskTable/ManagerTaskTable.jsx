@@ -4,11 +4,13 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditTaskModal from "../Modals/EditTaskModal/EditTaskModal";
 import DeletingTaskModal from "../Modals/DeletingTaskModal/DeletingTaskModal";
+import {convertToSentence} from "../../helpers/helpers";
 
 const ManagerTaskTable = ({data}) => {
     const [pointID, setPointID] = useState();
     const [showEditModal, setShowEditModal] = useState(false);
     const [showDeletingModal, setShowDeletingModal] = useState(false);
+    console.log(data)
 
     const handleClickEdit = (id) => {
         setPointID(id);
@@ -39,17 +41,17 @@ const ManagerTaskTable = ({data}) => {
                 </tr>
                 </thead>
                 <tbody>
-                { data.length === 0 ? <tr><td colSpan={9}>Задач пока нет</td></tr> : null }
+                { data.length === 0 || data.totalItemCount === 0 ? <tr><td colSpan={9}>Задач пока нет</td></tr> : null }
                 {
-                    data.map((task) => (
+                    data.items.map((task) => (
                         <tr key={task.id}>
                             <td>{task.id}</td>
-                            <td>{task.type}</td>
+                            <td>{convertToSentence(task.type)}</td>
                             <td>{task.employeeFullName}</td>
                             <td>{task.agentPointAddress}</td>
                             <td>{task.completeTime}</td>
                             <td>{task.startTime}</td>
-                            <td>{task.status.isCompleted ? <span>Выполнено</span> : <span>Не выполнено</span>}</td>
+                            <td>{task.isCompleted === null ? <span>Выполнено</span> : <span>Не выполнено</span>}</td>
                             <td>{task.gettingTime}</td>
                             <td>{task.distanceTo}</td>
                             <td>{task.creationTime}</td>
@@ -63,7 +65,7 @@ const ManagerTaskTable = ({data}) => {
                                     <DeleteForeverIcon/>
                                 </button>
                             </td>
-                            <EditTaskModal id={pointID} show={showEditModal} handleClose={() => setShowEditModal(false)}/>
+                            <EditTaskModal  data={task} id={pointID} show={showEditModal} handleClose={() => setShowEditModal(false)}/>
                             <DeletingTaskModal id={pointID} show={showDeletingModal} handleClose={() => setShowDeletingModal(false)}/>
                         </tr>
                     ))

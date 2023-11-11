@@ -4,6 +4,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditPointModal from "../Modals/EditPointModal/EditPointModal";
 import DeletingPointModal from "../Modals/DeletingPointModal/DeletingPointModal";
+import {convertToSentence} from "../../helpers/helpers";
 
 const test = [
     {
@@ -56,7 +57,7 @@ const PointsTable = ({data}) => {
                             <td>{item.id}</td>
                             <td>{item.address}</td>
                             <td>
-                                <div className={s.tab__ok}>{item.joinTime}</div>
+                                <div className={s.tab__ok}>{convertToSentence(item.joinTime)}</div>
                             </td>
                             <td>
                                 {item.materialsDelivery ? <div className={s.tab__ok}>Да</div> :

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Header from "../../UI/Header/Header";
 import s from "./taskDistribution.module.scss";
 import leftIcon from "../../assets/homepage/left.svg";
@@ -9,40 +9,42 @@ import {NavLink, useNavigate} from "react-router-dom";
 import distributeIcon from "../../assets/homepage/distributeIcon.svg";
 import ManagerTaskTable from "../../Components/ManagerTaskTable/ManagerTaskTable";
 import NewTaskModal from "../../Components/Modals/NewTaskModal/NewTaskModal";
+import {connect} from "react-redux";
+import {requestAllTasks, setNewArchivedTasks, setNewTasks} from "../../redux/reducers/managerReducer/managerAction";
 
-const data =  [
-    {
-        "id": 0,
-        "type": "DEPARTURE",
-        "agentPointId": 0,
-        "agentPointAddress": "string",
-        "creationTime": "2000-01-01",
-        "startTime": "12:00",
-        "gettingTime": 0,
-        "distanceTo": 0,
-        "completeTime": 0,
-        "employeeId": 0,
-        "employeeFullName": "string",
-        "order": 0,
-        "status": {
-            "isCompleted": true,
-            "comment": "string"
-        }
-    }
-]
 
-const TaskDistribution = () => {
+const TaskDistribution = ({tasks, employees, requestAllTasks, setNewArchivedTasks}) => {
     const [showNewTaskModal, setShowNewTaskModal] = useState(false);
     const navigate = useNavigate();
+    const header = new Headers();
+    const loginLS = localStorage.getItem('login');
+    const passwordLS = localStorage.getItem('password');
+    header.append('Authorization', 'Basic ' + btoa(loginLS + ':' + passwordLS));
+    header.append('Accept', 'application/json');
+    const archiveData = [];
 
-    const handleShowNewTaskModal = () => {
-        setShowNewTaskModal(true);
-    }
 
     const handleBack = () => {
         navigate(-1);
     }
 
+    useEffect(() => {
+        console.log(employees)
+        // for (let emp = 0; emp < employees.length; emp++) {
+        //     let employeeId = employees[emp].account.id;
+        //     for (let point = 0; point < agentPoints.length; agentPoints++) {
+        //         let pointID = agentPoints[point].id
+        //         requestAllTasks(header, employeeId, pointID, false)
+        //         console.log(tasks)
+        //         // data.append(tasks)
+        //         requestAllTasks(header, employeeId, pointID, false)
+        //         //dataArchive.append(tasks)
+        //     }
+        // }
+        requestAllTasks(header)
+        setNewArchivedTasks(archiveData);
+
+    },[])
 
     return(
         <div>
@@ -64,15 +66,22 @@ const TaskDistribution = () => {
                     </button>
                 </NavLink>
 
-                <button className={s.add__button} onClick={handleShowNewTaskModal}>
-                    Добавить задачу
-                </button>
+                {/*<button className={s.add__button} onClick={handleShowNewTaskModal}>*/}
+                {/*    Добавить задачу*/}
+                {/*</button>*/}
             </div>
 
-            <ManagerTaskTable data={data}/>
+            <ManagerTaskTable data={tasks}/>
             <NewTaskModal show={showNewTaskModal} handleClose={() => setShowNewTaskModal(false)}/>
         </div>
     )
 }
 
-export default TaskDistribution;
+const mapStateToProps = (store) => ({
+    employees: store.manager.employees,
+    agentPoints: store.manager.agentPoints,
+    tasks: store.manager.tasks,
+    archivedTasks: store.manager.archivedTasks,
+})
+
+export default connect(mapStateToProps, {requestAllTasks, setNewTasks, setNewArchivedTasks})(TaskDistribution);

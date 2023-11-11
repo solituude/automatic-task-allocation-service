@@ -6,8 +6,9 @@ import leftIcon from "../../assets/homepage/left.svg";
 import d from "../../Components/ManagerOptions/managerOptions.module.scss";
 import distributeIcon from "../../assets/homepage/distributeIcon.svg";
 import {useNavigate} from "react-router-dom";
+import {connect} from "react-redux";
 
-const ArchiveTasksPage = () => {
+const ArchiveTasksPage = ({archivedTasks}) => {
     const navigate = useNavigate();
 
     const handleBack = () => {
@@ -22,9 +23,13 @@ const ArchiveTasksPage = () => {
                 <span className={d.option__label}>Архив задач</span>
                 <img src={distributeIcon} alt={"i"}/>
             </button>
-            <ManagerTaskTable data={[]}/>
+            <ManagerTaskTable data={archivedTasks}/>
         </div>
     )
 }
 
-export default ArchiveTasksPage;
+const mapStateToProps = (store) => ({
+    archivedTasks: store.manager.archivedTasks,
+})
+
+export default connect(mapStateToProps)(ArchiveTasksPage);
