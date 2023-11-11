@@ -1,0 +1,6 @@
+[[redirects]]
+  from = "/search"
+  to = "http://178.170.196.88"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
