@@ -22,7 +22,7 @@ const StartPage = () => {
 
             <div className={s.button__container}>
                 <LogInButton/>
-                <SignUpButton/>
+                {/*<SignUpButton/>*/}
             </div>
 
 

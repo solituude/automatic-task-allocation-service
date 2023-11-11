@@ -71,7 +71,7 @@ const CustomModal = ({show, handleClose}) => {
     )
 }
 
-const TuitionManual = () => {
+const TuitionManual = ({data}) => {
     const [showModal, setShowModal] = useState(false);
     return(
         <div className={s.container}>
@@ -79,7 +79,7 @@ const TuitionManual = () => {
                 <span className={s.regular__text}>
                     Приоритет:
                     <span className={s.value__text}>
-                        {info.priority}
+                        {data.priority}
                     </span>
                 </span>
             </div>
@@ -87,16 +87,16 @@ const TuitionManual = () => {
                 <span className={s.regular__text}>
                     Время выполнения:
                     <span className={s.value__text}>
-                        {info.performTime}
+                        {data.performTime}
                     </span>
                 </span>
             </div>
 
             <div className={s.info__tab}>
                 <span className={s.regular__text}>
-                    Требуемый уровень сотрудника:
+                    Минимальный требуемый уровень сотрудника:
                     <span className={s.value__text}>
-                        {info.requiredEmployeeGrade}
+                        {data.requiredEmployeeGrade}
                     </span>
                 </span>
             </div>
@@ -109,14 +109,14 @@ const TuitionManual = () => {
                     <br/> <br/>
                     Отношение кол-ва выданных карт к одобренным заявкам менее
                         <span className={s.value__text}>
-                             {info.approvedAppsPercentage}
+                             {data.approvedAppsPercentage}
                         </span> %, если выдано больше
                         <span className={s.value__text}>
-                             {info.issuedCardsCount}
+                             {data.issuedCardsCount}
                         </span> карт
                 </span>
             </div>
-            <button onClick={() => setShowModal(true)}>Редактировать</button>
+            <button className={s.edit__button} onClick={() => setShowModal(true)}>Редактировать</button>
             <CustomModal show={showModal} handleClose={() => setShowModal(false)}/>
         </div>
     )

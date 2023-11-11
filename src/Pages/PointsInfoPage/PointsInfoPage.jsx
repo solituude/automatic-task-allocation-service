@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Header from "../../UI/Header/Header";
 import d from "../../Components/ManagerOptions/managerOptions.module.scss";
 import s from './pointsInfoPage.module.scss';
@@ -7,14 +7,27 @@ import infoIcon from "../../assets/homepage/infoIcon.svg";
 import {useNavigate} from "react-router-dom";
 import PointsTable from "../../Components/PointsTable/PointsTable";
 import NewPointModal from "../../Components/Modals/NewPointModal/NewPointModal";
+import {connect} from "react-redux";
+import {requestAgentPoints} from "../../redux/reducers/managerReducer/managerAction";
 
-const PointsInfoPage = () => {
+const PointsInfoPage = ({agentPoints, requestAgentPoints}) => {
     const navigate = useNavigate();
     const [showNewPointModal, setShowNewPointModal] = useState(false);
+    const header = new Headers();
+    const login = localStorage.getItem('login');
+    const password = localStorage.getItem('password');
+    header.append('Authorization', 'Basic ' + btoa(login + ':' + password));
+    header.append('Accept', 'application/json');
 
     const handleBack = () => {
         navigate(-1);
     }
+
+    useEffect(() => {
+        requestAgentPoints(header);
+        console.log(agentPoints);
+        console.log(login, password)
+    },[])
 
     return(
         <div>
@@ -27,10 +40,14 @@ const PointsInfoPage = () => {
             <button className={s.add__button} onClick={() => setShowNewPointModal(true)}>
                 Добавить агентскую точку
             </button>
-            <PointsTable/>
+            <PointsTable data={agentPoints}/>
             <NewPointModal show={showNewPointModal} handleClose={() => setShowNewPointModal(false)}/>
         </div>
     )
 }
 
-export default PointsInfoPage;
+const mapStateToProps = (store) => ({
+    agentPoints: store.manager.agentPoints,
+})
+
+export default connect(mapStateToProps, {requestAgentPoints})(PointsInfoPage);

@@ -24,7 +24,7 @@ export const agentPointsAPI = {
      * */
     getAllAgentPoints(header, page, size) {
         return fetch(`/agent_points/all?page=${page}&size=${size}`, {
-            method: 'POST',
+            method: 'GET',
             headers: header
         })
     },

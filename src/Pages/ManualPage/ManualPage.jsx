@@ -9,6 +9,12 @@ import DepartureManual from "../../Components/DepartureManual/DepartureManual";
 import TuitionManual from "../../Components/TuitionManual/TuitionManual";
 import DeliveryManual from "../../Components/DeliveryManual/DeliveryManual";
 import style from './manualPage.module.scss';
+import {connect} from "react-redux";
+import {
+    requestDeliveryManual,
+    requestDepartureManual,
+    requestTuitionManual
+} from "../../redux/reducers/managerReducer/managerAction";
 
 const test = [
     {
@@ -28,9 +34,14 @@ const test = [
 
 
 
-const ManualPage = () => {
+const ManualPage = ({departureManual, tuitionManual, deliveryManual, requestDepartureManual, requestTuitionManual, requestDeliveryManual}) => {
     const navigate = useNavigate();
     const [manualID, setManualID] = useState(0);
+    const loginLS = localStorage.getItem('login');
+    const passwordLS = localStorage.getItem('password');
+    const header = new Headers();
+    header.append('Authorization', 'Basic ' + btoa(loginLS + ':' + passwordLS));
+    header.append('Accept', 'application/json');
 
     const handleBack = () => {
         navigate(-1);
@@ -40,6 +51,13 @@ const ManualPage = () => {
         // получение информации о справочнике (2 запроса)
         // console.log(manualID);
     }, [manualID])
+
+    useEffect(() => {
+        requestDepartureManual(header);
+        requestTuitionManual(header);
+        requestDeliveryManual(header);
+    },[])
+
 
     return(
         <div>
@@ -66,13 +84,19 @@ const ManualPage = () => {
             </div>
 
             <div className={style.manual__container}>
-                {manualID === 0 ? <DepartureManual/> : null}
-                {manualID === 1 ? <TuitionManual/> : null}
-                {manualID === 2 ? <DeliveryManual/> : null}
+                {manualID === 0 ? <DepartureManual data={departureManual}/> : null}
+                {manualID === 1 ? <TuitionManual data={tuitionManual}/> : null}
+                {manualID === 2 ? <DeliveryManual data={deliveryManual}/> : null}
             </div>
 
         </div>
     )
 }
 
-export default ManualPage;
+const mapStateToProps = (store) => ({
+    departureManual: store.manager.departureManual,
+    tuitionManual: store.manager.tuitionManual,
+    deliveryManual: store.manager.deliveryManual,
+})
+
+export default connect(mapStateToProps, {requestDepartureManual, requestTuitionManual, requestDeliveryManual})(ManualPage);

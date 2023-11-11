@@ -17,7 +17,7 @@ const test = [
     }
 ]
 
-const PointsTable = () => {
+const PointsTable = ({data}) => {
     const [pointID, setPointID] = useState();
     const [showEditModal, setShowEditModal] = useState(false);
     const [showDeletingModal, setShowDeletingModal] = useState(false);
@@ -51,19 +51,20 @@ const PointsTable = () => {
                 <tbody>
 
                 {
-                    test.map((item) => (
+                    data.map((item) => (
                         <tr key={item.id}>
                             <td>{item.id}</td>
                             <td>{item.address}</td>
                             <td>
-                                <div className={s.tab__ok}>{item.connectionTime}</div>
+                                <div className={s.tab__ok}>{item.joinTime}</div>
                             </td>
                             <td>
-                                <div className={s.tab__none}>
-                                    {item.isDelieveried} </div></td>
-                            <td>{item.daysAfterGiveLastCard}</td>
-                            <td>{item.numberAcceptedRequests}</td>
-                            <td>{item.numberGivedCards}</td>
+                                {item.materialsDelivery ? <div className={s.tab__ok}>Да</div> :
+                                    <div className={s.tab__none}>
+                                        Нет </div>}</td>
+                            <td>{item.cardIssuanceDaysPassed}</td>
+                            <td>{item.approvedAppsCount}</td>
+                            <td>{item.issuedCardsCount}</td>
                             <td>
                                 <button className={s.custom__button} onClick={() => handleClickEdit(item.id)}>
                                     <EditIcon/>

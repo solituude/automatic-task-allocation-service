@@ -11,7 +11,7 @@ import {employeeReducer} from "./reducers/employeeReducer/employeeReducer";
 const reducers = combineReducers({
     main: appReducer,
     manager: managerReducer,
-    employee: employeeReducer
+    employee: employeeReducer,
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

@@ -94,7 +94,7 @@ const DeliveryManual = () => {
 
             <div className={s.info__tab}>
                 <span className={s.regular__text}>
-                    Требуемый уровень сотрудника:
+                    Минимальный требуемый уровень сотрудника:
                     <span className={s.value__text}>
                         {info.requiredEmployeeGrade}
                     </span>
@@ -122,7 +122,7 @@ const DeliveryManual = () => {
                     Карты и материалы не доставлялись
                 </span>
             </div>
-            <button onClick={() => setShowModal(true)}>Редактировать</button>
+            <button className={s.edit__button} onClick={() => setShowModal(true)}>Редактировать</button>
             <CustomModal show={showModal} handleClose={() => setShowModal(false)}/>
         </div>
     )

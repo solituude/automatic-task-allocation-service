@@ -70,16 +70,17 @@ const CustomModal = ({show, handleClose}) => {
     )
 }
 
-const DepartureManual = () => {
+const DepartureManual = ({data}) => {
     const [showModal, setShowModal] = useState(false);
 
+    console.log(data)
     return(
         <div className={s.container}>
             <div className={s.info__tab}>
                 <span className={s.regular__text}>
                     Приоритет:
                     <span className={s.value__text}>
-                        {info.priority}
+                        {data.priority}
                     </span>
                 </span>
             </div>
@@ -87,16 +88,16 @@ const DepartureManual = () => {
                 <span className={s.regular__text}>
                     Время выполнения:
                     <span className={s.value__text}>
-                        {info.performTime}
+                        {data.performTime}
                     </span>
                 </span>
             </div>
 
             <div className={s.info__tab}>
                 <span className={s.regular__text}>
-                    Требуемый уровень сотрудника:
+                    Минимальный требуемый уровень сотрудника:
                     <span className={s.value__text}>
-                        {info.requiredEmployeeGrade}
+                        {data.requiredEmployeeGrade}
                     </span>
                 </span>
             </div>
@@ -109,7 +110,7 @@ const DepartureManual = () => {
                     <br/> <br/>
                     Дата выдачи последней карты более
                         <span className={s.value__text}>
-                             {info.issuedCardsMinDaysCount1}
+                             {data.issuedCardsMinDaysCount1}
                         </span>
                     дней назад, при этом есть одобренные заявки
                 </span>
@@ -122,7 +123,7 @@ const DepartureManual = () => {
                     <br/> <br/>
                     Дата выдачи последней карты более
                     <span className={s.value__text}>
-                        {info.issuedCardsMinDaysCount2}
+                        {data.issuedCardsMinDaysCount2}
                     </span>
                     дней назад
                 </span>
