@@ -117,7 +117,7 @@ export const requestEmployees = (header) => async (dispatch) => {
 
 export const requestAgentPoints = (header) => async (dispatch) => {
     dispatch(setIsFetching(true));
-    const response = await agentPointsAPI.getAllAgentPoints(header, 0, 10);
+    const response = await agentPointsAPI.getAllAgentPoints(header, 0, 100);
     let data = response.json();
     if (response.status === 200) {
         data.then(res => dispatch(setAgentPoints(res.items)))
@@ -210,7 +210,7 @@ export const createNewPoint = (header, body) => async (dispatch) => {
     let data = response.json();
     if (response.status === 200) {
         data.then(res => dispatch(setAgentPoints(res)))
-        dispatch(setAgentPoints(response.json()));
+        // dispatch(setAgentPoints(response.json()));
         dispatch(setIsFetching(false));
     } else {
         console.log(response)

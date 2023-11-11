@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import s from "../DepartureManual/departureManual.module.scss";
 import {Button, Modal} from "react-bootstrap";
 import Form from "react-bootstrap/Form";
-import {convertToSentence} from "../../helpers/helpers";
+import {convertToSentence, formatHours, formatMinutes} from "../../helpers/helpers";
 
 
 const CustomModal = ({show, handleClose}) => {
@@ -80,7 +80,7 @@ const TuitionManual = ({data}) => {
                 <span className={s.regular__text}>
                     Время выполнения:
                     <span className={s.value__text}>
-                        {data.performTime}
+                        {data.performTime} {formatHours(data.performTime)}
                     </span>
                 </span>
             </div>

@@ -41,8 +41,7 @@ const ManagerTaskTable = ({data}) => {
                 </tr>
                 </thead>
                 <tbody>
-                { data.length === 0 || data.totalItemCount === 0 ? <tr><td colSpan={9}>Задач пока нет</td></tr> : null }
-                {
+                { data.length === 0 || data.totalItemCount === 0 ? <tr><td colSpan={9}>Задач пока нет</td></tr> :
                     data.items.map((task) => (
                         <tr key={task.id}>
                             <td>{task.id}</td>
@@ -70,6 +69,7 @@ const ManagerTaskTable = ({data}) => {
                         </tr>
                     ))
                 }
+
                 </tbody>
             </table>
         </div>

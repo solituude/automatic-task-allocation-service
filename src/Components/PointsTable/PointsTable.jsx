@@ -33,8 +33,8 @@ const PointsTable = ({data}) => {
                     <th>Кол-во дней после выдачи последней карты</th>
                     <th>Количество одобренных заявок</th>
                     <th>Кол-во выданных карт</th>
-                    <th>Редактировать</th>
-                    <th>Удалить</th>
+                    {/*<th>Редактировать</th>*/}
+                    {/*<th>Удалить</th>*/}
                 </tr>
                 </thead>
                 <tbody>
@@ -54,18 +54,19 @@ const PointsTable = ({data}) => {
                             <td>{item.cardIssuanceDaysPassed}</td>
                             <td>{item.approvedAppsCount}</td>
                             <td>{item.issuedCardsCount}</td>
-                            <td>
-                                <button className={s.custom__button} onClick={() => handleClickEdit(item.id)}>
-                                    <EditIcon/>
-                                </button>
-                            </td>
-                            <td>
-                                <button className={s.custom__button} onClick={() => handleClickDeleting(item.id)}>
-                                    <DeleteForeverIcon/>
-                                </button>
-                            </td>
+                            {/*<td>*/}
+                            {/*    <button className={s.custom__button} onClick={() => handleClickEdit(item.id)}>*/}
+                            {/*        <EditIcon/>*/}
+                            {/*    </button>*/}
+                            {/*</td>*/}
+                            {/*<td>*/}
+                            {/*    <button className={s.custom__button} onClick={() => handleClickDeleting(item.id)}>*/}
+                            {/*        <DeleteForeverIcon/>*/}
+                            {/*    </button>*/}
+                            {/*</td>*/}
                         </tr>
                     ))
+
                 }
                 </tbody>
             </table>
@@ -74,7 +75,11 @@ const PointsTable = ({data}) => {
                     <EditPointModal id={pointID} show={showEditModal} handleClose={() => setShowEditModal(false)}/> : null
             }
             {/*<EditPointModal id={pointID} show={showEditModal} handleClose={() => setShowEditModal(false)}/>*/}
-            <DeletingPointModal id={pointID} show={showDeletingModal} handleClose={() => setShowDeletingModal(false)}/>
+            {
+                showDeletingModal ?
+                    <DeletingPointModal id={pointID} show={showDeletingModal} handleClose={() => setShowDeletingModal(false)}/> : null
+            }
+
         </div>
     )
 }

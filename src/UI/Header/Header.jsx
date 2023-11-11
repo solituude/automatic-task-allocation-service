@@ -4,6 +4,7 @@ import s from './header.module.scss';
 import userIcon from '../../assets/homepage/userIcon.svg';
 import {connect} from "react-redux";
 import {requestAccountsInfo} from "../../redux/actions";
+import {convertToSentence} from "../../helpers/helpers";
 
 const header = new Headers();
 const loginLS = localStorage.getItem('login');
@@ -32,7 +33,7 @@ const Header = ({fullName, role, requestAccountsInfo}) => {
             <div className={s.user__container}>
                 <div className={s.info__container}>
                     <span className={s.info__name}>{fullName}</span>
-                    <span className={s.info__role}>{role}</span>
+                    <span className={s.info__role}>{convertToSentence(role)}</span>
                 </div>
                 <img src={userIcon} alt={'0'} height={29}/>
             </div>

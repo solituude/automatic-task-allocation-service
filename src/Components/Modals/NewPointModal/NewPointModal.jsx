@@ -14,9 +14,9 @@ header.append('Accept', 'application/json');
 
 const NewPointModal = ({show, handleClose, createNewPoint}) => {
     const [newPoint, setNewPoint] = useState({
-        address: "string",
-        joinTime: "YESTERDAY",
-        materialsDelivered: true,
+        address: "",
+        joinTime: "",
+        materialsDelivered: false,
         cardIssuanceDaysPassed: 0,
         approvedAppsCount: 0,
         issuedCardsCount: 0

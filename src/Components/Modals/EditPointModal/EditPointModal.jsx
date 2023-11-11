@@ -39,7 +39,7 @@ const EditPointModal = ({id, show, handleClose,requestPointByID, currentAgentPoi
 
 
     const handleEdit = () => {
-        editPoint(header, JSON.stringify(newPoint), id)
+        editPoint(header, newPoint, id)
     }
     // useEffect(() => {
     //     requestPointByID(header, id)
