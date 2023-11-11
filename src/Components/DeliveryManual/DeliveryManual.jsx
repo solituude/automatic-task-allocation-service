@@ -3,9 +3,23 @@ import s from "../DepartureManual/departureManual.module.scss";
 import {Button, Modal} from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import {convertToSentence} from "../../helpers/helpers";
+import {connect} from "react-redux";
+import {setDeliveryManual, updateDeliveryManual} from "../../redux/reducers/managerReducer/managerAction";
 
+const header = new Headers();
+const loginLS = localStorage.getItem('login');
+const passwordLS = localStorage.getItem('password');
+header.append('Authorization', 'Basic ' + btoa(loginLS + ':' + passwordLS));
+header.append('Accept', 'application/json');
+header.append('Content-Type', 'application/json');
 
-const CustomModal = ({show, handleClose}) => {
+const CustomModal = ({data, show, handleClose, updateDeliveryManual}) => {
+    const [item, setItem] = useState({});
+
+    const handleUpdate = () => {
+        updateDeliveryManual(header, JSON.stringify(item))
+    }
+
     return(
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
@@ -14,7 +28,8 @@ const CustomModal = ({show, handleClose}) => {
             <Modal.Body>
                 <div>
                     Приоритет
-                    <Form.Select defaultValue={"LOW"}>
+                    <Form.Select defaultValue={data.priority} onChange={(e) =>
+                        setItem({...item, priority: e.target.value})}>
                         <option value="LOW">Низкий</option>
                         <option value="MIDDLE">Средний</option>
                         <option value="HIGH">Высокий</option>
@@ -22,7 +37,8 @@ const CustomModal = ({show, handleClose}) => {
                 </div>
                 <div>
                     Требуемый уровень сотрудника
-                    <Form.Select defaultValue={"MIDDLE"}>
+                    <Form.Select defaultValue={data.requiredEmployeeGrade} onChange={(e) =>
+                        setItem({...item, requiredEmployeeGrade: e.target.value})}>
                         <option value="JUNIOR">Джун</option>
                         <option value="MIDDLE">Мидл</option>
                         <option value="SENIOR">Сеньор</option>
@@ -31,23 +47,16 @@ const CustomModal = ({show, handleClose}) => {
 
                 <div>
                     Время выполнения (в часах)
-                    <Form.Select defaultValue={"MIDDLE"}>
-                        <option value="1">1</option>
-                        <option value="1.5">1.5</option>
-                        <option value="2">2</option>
-                        <option value="2.5">2.5</option>
-                        <option value="3">3</option>
-                        <option value="3.5">3.5</option>
-                        <option value="4">4</option>
-                    </Form.Select>
+                    <Form.Control defaultValue={data.performTime} type={"number"} onChange={(e) =>
+                        setItem({...item, performTime: Number(e.target.value)})}/>
                 </div>
 
                 <div>
                     Когда подключена точка
-                    <Form.Select defaultValue={"недавно"}>
+                    <Form.Select defaultValue={data.joinTime} onChange={(e) =>
+                        setItem({...item, joinTime: e.target.value})}>
                         <option value="YESTERDAY">вчера</option>
-                        <option value="недавно">недавно</option>
-                        <option value="давно">давно</option>
+                        <option value="LONG_AGO">давно</option>
 
                     </Form.Select>
                 </div>
@@ -57,7 +66,7 @@ const CustomModal = ({show, handleClose}) => {
                 <Button variant="secondary" onClick={handleClose}>
                     Закрыть
                 </Button>
-                <Button variant="primary" onClick={handleClose}>
+                <Button variant="primary" onClick={handleUpdate}>
                     Сохранить
                 </Button>
             </Modal.Footer>
@@ -65,7 +74,7 @@ const CustomModal = ({show, handleClose}) => {
     )
 }
 
-const DeliveryManual = ({data}) => {
+const DeliveryManual = ({data, updateDeliveryManual}) => {
     const [showModal, setShowModal] = useState(false);
     return(
         <div className={s.container}>
@@ -117,9 +126,13 @@ const DeliveryManual = ({data}) => {
                 </span>
             </div>
             <button className={s.edit__button} onClick={() => setShowModal(true)}>Редактировать</button>
-            <CustomModal show={showModal} handleClose={() => setShowModal(false)}/>
+            <CustomModal updateDeliveryManual={updateDeliveryManual} data={data} show={showModal} handleClose={() => setShowModal(false)}/>
         </div>
     )
 }
 
-export default DeliveryManual;
+const mapStateToProps = (store) => ({
+    deliveryManual: store.manager.deliveryManual,
+})
+
+export default connect(mapStateToProps, {updateDeliveryManual})(DeliveryManual);

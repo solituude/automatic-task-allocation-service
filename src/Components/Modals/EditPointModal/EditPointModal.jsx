@@ -1,10 +1,51 @@
-import React from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import {Button, Modal} from "react-bootstrap";
 import Form from "react-bootstrap/Form";
+import {connect} from "react-redux";
+import {editPoint, requestPointByID} from "../../../redux/reducers/managerReducer/managerAction";
 
 // по айдишнику получаю информацию конкретной точки и потом меняю его по кнопке сохранить
+const header = new Headers();
+const loginLS = localStorage.getItem('login');
+const passwordLS = localStorage.getItem('password');
+header.append('Authorization', 'Basic ' + btoa(loginLS + ':' + passwordLS));
+header.append('Content-Type', 'application/json');
+header.append('Accept', 'application/json');
 
-const EditPointModal = ({id, show, handleClose}) => {
+const EditPointModal = ({id, show, handleClose,requestPointByID, currentAgentPoint, editPoint}) => {
+    const [newPoint, setNewPoint] = useState({
+        address: "string",
+        joinTime: "YESTERDAY",
+        materialsDelivered: true,
+        cardIssuanceDaysPassed: 0,
+        approvedAppsCount: 0,
+        issuedCardsCount: 0
+    })
+
+    const fetchDataCallback = useCallback(async () => {
+        try {
+            await requestPointByID(header, id);
+            // console.log(res)
+            setNewPoint(currentAgentPoint);
+            // Делайте что-то с результатом
+        } catch (error) {
+            console.error('Ошибка:', error.message);
+        }
+    }, [requestPointByID]);
+
+    useEffect(() => {
+        fetchDataCallback();
+    }, [fetchDataCallback]);
+
+
+    const handleEdit = () => {
+        editPoint(header, JSON.stringify(newPoint), id)
+    }
+    // useEffect(() => {
+    //     requestPointByID(header, id)
+    //     console.log(currentAgentPoint)
+    //     setNewPoint(currentAgentPoint);
+    // },[])
     return(
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
@@ -13,11 +54,11 @@ const EditPointModal = ({id, show, handleClose}) => {
             <Modal.Body>
                 <div>
                     Адрес
-                    <Form.Control type="text" />
+                    <Form.Control defaultValue={currentAgentPoint.address} onChange={(e) => setNewPoint({...newPoint, address: e.target.value})} type="text" />
                 </div>
                 <div>
                     Когда подключена точка
-                    <Form.Select>
+                    <Form.Select defaultValue={currentAgentPoint.joinTime}>
                         <option value="YESTERDAY">Вчера</option>
                         <option value="LONG">Давно</option>
                     </Form.Select>
@@ -50,12 +91,15 @@ const EditPointModal = ({id, show, handleClose}) => {
                 <Button variant="secondary" onClick={handleClose}>
                     Закрыть
                 </Button>
-                <Button variant="primary" onClick={handleClose}>
+                <Button variant="primary" onClick={handleEdit}>
                     Сохранить
                 </Button>
             </Modal.Footer>
         </Modal>
     )
 }
-
-export default EditPointModal;
+const mapStateToProps = (store) => ({
+    currentAgentPoint: store.manager.currentAgentPoint,
+    isFetching: store.main.isFetching
+})
+export default connect(mapStateToProps, {requestPointByID, editPoint})(EditPointModal);

@@ -69,7 +69,11 @@ const PointsTable = ({data}) => {
                 }
                 </tbody>
             </table>
-            <EditPointModal id={pointID} show={showEditModal} handleClose={() => setShowEditModal(false)}/>
+            {
+                showEditModal ?
+                    <EditPointModal id={pointID} show={showEditModal} handleClose={() => setShowEditModal(false)}/> : null
+            }
+            {/*<EditPointModal id={pointID} show={showEditModal} handleClose={() => setShowEditModal(false)}/>*/}
             <DeletingPointModal id={pointID} show={showDeletingModal} handleClose={() => setShowDeletingModal(false)}/>
         </div>
     )

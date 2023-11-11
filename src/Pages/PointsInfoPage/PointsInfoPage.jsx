@@ -34,7 +34,7 @@ const PointsInfoPage = ({agentPoints, requestAgentPoints}) => {
 
     useEffect(() => {
         fetchDataCallback();
-    }, [fetchDataCallback]);
+    }, [fetchDataCallback, agentPoints]);
 
     return(
         <div>

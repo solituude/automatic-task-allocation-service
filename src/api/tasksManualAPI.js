@@ -12,7 +12,7 @@ export const tasksManualAPI = {
     //изменить справочник задачи выезда
     changeDepartureManual(header, body) {
         return fetch('/tasks/departure/manual', {
-            method: 'GET',
+            method: 'PUT',
             headers: header,
             body: body
         });

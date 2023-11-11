@@ -12,7 +12,7 @@ export const agentPointsAPI = {
     }
     * */
     createAgentPoint(header, body) {
-        return fetch('/api/agent_points', {
+        return fetch('/agent_points', {
             method: 'POST',
             headers: header,
             body: body
@@ -37,10 +37,11 @@ export const agentPointsAPI = {
         })
     },
 
-    updateAgentPointByID(header, id){
+    updateAgentPointByID(header, body, id){
         return fetch(`/agent_points/${id}`, {
             method: 'PUT',
-            headers: header
+            headers: header,
+            body: body,
         })
     },
 
