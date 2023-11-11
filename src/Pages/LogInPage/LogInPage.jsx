@@ -29,7 +29,7 @@ const LogInPage = ({role, setNewLogin, setNewPassword, requestAccountsInfo}) => 
 
 
         // ЗАМЕНИТЬ КОГДА ПОФИКСЯТ ЗАПРОС ВЫШЕ
-        if (role === 'MANAGER' || role === 'ADMIN') {
+        if (currentLogin === 'manager' || role === 'ADMIN') {
             // setLink('/managerHomepage')
             window.location.href = '/managerHomepage';
         } else if (role === 'EMPLOYEE') {

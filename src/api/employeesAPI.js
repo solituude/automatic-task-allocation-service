@@ -1,7 +1,7 @@
 export const employeesAPI = {
     // получение списка всех сотрудников (MANAGER)
     getAllEmployees(header, page, size) {
-        return fetch(`/employees/all?page=${page}&size=${size}`,{
+        return fetch(`/api/employees/all?page=${page}&size=${size}`,{
             method: 'GET',
             headers: header
         })
